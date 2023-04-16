@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigation Sidebar with Collapsible Forms</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+            border-right: 1px solid #eee;
+        }
+
+        .main {
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        .sub-header {
+            margin-top: 30px;
+        }
+
+        .collapse {
+            display: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          // toggle form visibility when clicking on sidebar links
+          $('.toggle-form').click(function(e){
+            e.preventDefault();
+            var target = $(this).data('target');
+            $(target).collapse('toggle');
+          });
+        });
+    </script>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Navigation Sidebar</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="#" class="toggle-form" data-target="#video-course-form">Video Courses</a></li>
+                <li><a href="#" class="toggle-form" data-target="#quiz-form">Quizzes</a></li>
+                <li><a href="#" class="toggle-form" data-target="#pdf-book-form">PDF Books</a></li>
+                <li><a href="#" class="toggle-form" data-target="#skill-path-form">Skill Paths</a></li>
+                <li><a href="#" class="toggle-form" data-target="#pre-requisite-form">Pre-requisite Courses</a></li>
+                <li><a href="#" class="toggle-form" data-target="#quiz-settings-form">Quiz Settings</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 main">
+            <div id="video-course-form" class="collapse">
+                <h2 class="sub-header">Add Video Course</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="course-title">Title</label>
+                        <input type="text" class="form-control" id="course-title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-description">Description</label>
+                        <textarea class="form-control" id="course-description" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-video-url">Video URL</label>
+                        <input type="text" class="form-control" id="course-video-url" name="video_url" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </form>
+            </div>
+            <div id="quiz-form" class="collapse">
+            <h2 class="sub-header">Add Quiz</h2>
+                <form id="add-quiz-form">
+                    <div class="form-group">
+                        <label for="quiz-title">Title</label>
+                        <input type="text" class="form-control" id="quiz-title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quiz-description">Description</label>
+                        <textarea class="form-control" id="quiz-description" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="quiz-time-limit">Time Limit (minutes)</label>
+                        <input type="number" class="form-control" id="quiz-time-limit" name="time_limit" min="1" max="180" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quiz-passing-score">Passing Score (%)</label>
+                        <input type="number" class="form-control" id="quiz-passing-score" name="passing_score" min="1" max="100" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
