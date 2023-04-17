@@ -14,4 +14,4 @@ categories:
   - title: 'Dependency Updates'
     label: 'dependency-update'
 exclude-contributors:
-  - 'bind-cxeng'
+  - 'bind-cxeng-1'
